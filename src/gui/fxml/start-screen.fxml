@@ -10,76 +10,86 @@
 <?import javafx.scene.text.*?>
 
 
-<GridPane prefHeight="448.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.startup.StartScreenController">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints maxHeight="210.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="510.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="510.0" minHeight="10.0" prefHeight="292.0" vgrow="SOMETIMES" />
-   </rowConstraints>
-   <children>
+<GridPane prefHeight="448.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="gui.startup.StartScreenController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="210.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="510.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="510.0" minHeight="10.0" prefHeight="292.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
         <MenuBar>
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem fx:id="menu_newProject" mnemonicParsing="false" onAction="#newProjectDialog" text="New" />
-                        <MenuItem fx:id="menu_openProject" mnemonicParsing="false" onAction="#openProjectDialog" text="Open…" />
+                        <MenuItem fx:id="menu_newProject" mnemonicParsing="false" onAction="#newProjectDialog"
+                                  text="New"/>
+                        <MenuItem fx:id="menu_openProject" mnemonicParsing="false" onAction="#openProjectDialog"
+                                  text="Open…"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About Text Adventure Maker" />
+                        <MenuItem mnemonicParsing="false" text="About Text Adventure Maker"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-      <GridPane alignment="CENTER" prefHeight="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="392.0" minHeight="10.0" prefHeight="174.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="424.0" minHeight="0.0" prefHeight="74.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="392.0" minHeight="0.0" prefHeight="78.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Recent Projects" underline="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Label>
-                <Button fx:id="newProjectButton" mnemonicParsing="false" onAction="#newProjectDialog" prefWidth="145.0" text="New Project" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <GridPane alignment="CENTER" prefHeight="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1"
+                  GridPane.rowSpan="2147483647">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="392.0" minHeight="10.0" prefHeight="174.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="424.0" minHeight="0.0" prefHeight="74.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="392.0" minHeight="0.0" prefHeight="78.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label text="Recent Projects" underline="true" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                       GridPane.rowIndex="1">
                     <font>
-                        <Font size="20.0" />
+                        <Font name="Arial" size="25.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="newProjectButton" mnemonicParsing="false" onAction="#newProjectDialog" prefWidth="145.0"
+                        text="New Project" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="20.0"/>
                     </font>
                 </Button>
-                <Button fx:id="openProjectButton" mnemonicParsing="false" onAction="#openProjectDialog" prefWidth="145.0" text="Open Project" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Button fx:id="openProjectButton" mnemonicParsing="false" onAction="#openProjectDialog"
+                        prefWidth="145.0" text="Open Project" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <font>
-                        <Font size="20.0" />
+                        <Font size="20.0"/>
                     </font>
                 </Button>
-                <Button fx:id="quitButton" mnemonicParsing="false" onAction="#exitApplication" prefWidth="145.0" text="Quit" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Button fx:id="quitButton" mnemonicParsing="false" onAction="#exitApplication" prefWidth="145.0"
+                        text="Quit" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <font>
-                        <Font size="20.0" />
+                        <Font size="20.0"/>
                     </font>
                 </Button>
-            <ListView fx:id="recentProjectsList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
-               <GridPane.margin>
-                  <Insets right="10.0" />
-               </GridPane.margin>
-            </ListView>
-         </children>
-      </GridPane>
-      <Label text="Text Adventure Creator" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-         <font>
-            <Font name="Arial" size="50.0" />
-         </font>
-      </Label>
-   </children>
+                <ListView fx:id="recentProjectsList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2"
+                          GridPane.rowIndex="2" GridPane.rowSpan="2">
+                    <GridPane.margin>
+                        <Insets right="10.0"/>
+                    </GridPane.margin>
+                </ListView>
+            </children>
+        </GridPane>
+        <Label text="Text Adventure Creator" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER"
+               GridPane.rowIndex="1">
+            <font>
+                <Font name="Arial" size="50.0"/>
+            </font>
+        </Label>
+    </children>
 </GridPane>

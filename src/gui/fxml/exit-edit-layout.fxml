@@ -10,61 +10,71 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="360.0" maxWidth="600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label fx:id="exitPageLabel" layoutX="25.0" layoutY="26.0" text="New Exit" textFill="#0d6516" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <effect>
-            <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
-         </effect>
-         <font>
-            <Font name="High Tower Text" size="40.0" />
-         </font>
-      </Label>
-      <TextField fx:id="keywordField" layoutX="25.0" layoutY="86.0" promptText="Exit Keyword" />
-      <TextArea fx:id="descriptionField" layoutX="25.0" layoutY="126.0" prefHeight="54.0" prefWidth="334.0" promptText="Exit description... (optional)" />
-      <CheckBox fx:id="hiddenCheckbox" layoutX="25.0" layoutY="313.0" mnemonicParsing="false" text="Hidden">
-         <font>
-            <Font name="High Tower Text" size="18.0" />
-         </font>
-         <tooltip>
-            <Tooltip autoHide="true" text="Should this exit show up in the room description?" />
-         </tooltip>
-      </CheckBox>
-      <Label layoutX="25.0" layoutY="186.0" text="Destination">
-         <font>
-            <Font name="High Tower Text" size="25.0" />
-         </font>
-      </Label>
-      <CheckBox fx:id="requireItemCheckbox" layoutX="25.0" layoutY="232.0" mnemonicParsing="false" text="Require Item">
-         <font>
-            <Font name="High Tower Text" size="18.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="requireSkillCheckbox" layoutX="25.0" layoutY="273.0" mnemonicParsing="false" text="Require Skill">
-         <font>
-            <Font name="High Tower Text" size="18.0" />
-         </font>
-      </CheckBox>
-      <Button fx:id="saveButton" layoutX="502.0" layoutY="309.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="74.0" text="Save">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="cancelButton" layoutX="415.0" layoutY="309.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="74.0" text="Cancel">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <ChoiceBox fx:id="destinationRoomChoice" layoutX="173.0" layoutY="186.0" prefHeight="31.0" prefWidth="187.0" />
-      <ChoiceBox fx:id="requiredItemChoice" disable="true" layoutX="173.0" layoutY="229.0" prefHeight="31.0" prefWidth="187.0" />
-      <ChoiceBox fx:id="requiredSkillChoice" disable="true" layoutX="173.0" layoutY="270.0" prefHeight="31.0" prefWidth="187.0" />
-      <ImageView fitHeight="67.0" fitWidth="57.0" layoutX="529.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/exit.png" />
-         </image>
-      </ImageView>
-   </children>
-   <padding>
-      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-   </padding>
+<AnchorPane maxHeight="360.0" maxWidth="600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label fx:id="exitPageLabel" layoutX="25.0" layoutY="26.0" text="New Exit" textFill="#0d6516"
+               AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <effect>
+                <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0"/>
+            </effect>
+            <font>
+                <Font name="High Tower Text" size="40.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="keywordField" layoutX="25.0" layoutY="86.0" promptText="Exit Keyword"/>
+        <TextArea fx:id="descriptionField" layoutX="25.0" layoutY="126.0" prefHeight="54.0" prefWidth="334.0"
+                  promptText="Exit description... (optional)"/>
+        <CheckBox fx:id="hiddenCheckbox" layoutX="25.0" layoutY="313.0" mnemonicParsing="false" text="Hidden">
+            <font>
+                <Font name="High Tower Text" size="18.0"/>
+            </font>
+            <tooltip>
+                <Tooltip autoHide="true" text="Should this exit show up in the room description?"/>
+            </tooltip>
+        </CheckBox>
+        <Label layoutX="25.0" layoutY="186.0" text="Destination">
+            <font>
+                <Font name="High Tower Text" size="25.0"/>
+            </font>
+        </Label>
+        <CheckBox fx:id="requireItemCheckbox" layoutX="25.0" layoutY="232.0" mnemonicParsing="false"
+                  text="Require Item">
+            <font>
+                <Font name="High Tower Text" size="18.0"/>
+            </font>
+        </CheckBox>
+        <CheckBox fx:id="requireSkillCheckbox" layoutX="25.0" layoutY="273.0" mnemonicParsing="false"
+                  text="Require Skill">
+            <font>
+                <Font name="High Tower Text" size="18.0"/>
+            </font>
+        </CheckBox>
+        <Button fx:id="saveButton" layoutX="502.0" layoutY="309.0" mnemonicParsing="false" prefHeight="37.0"
+                prefWidth="74.0" text="Save">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Button>
+        <Button fx:id="cancelButton" layoutX="415.0" layoutY="309.0" mnemonicParsing="false" prefHeight="37.0"
+                prefWidth="74.0" text="Cancel">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Button>
+        <ChoiceBox fx:id="destinationRoomChoice" layoutX="173.0" layoutY="186.0" prefHeight="31.0" prefWidth="187.0"/>
+        <ChoiceBox fx:id="requiredItemChoice" disable="true" layoutX="173.0" layoutY="229.0" prefHeight="31.0"
+                   prefWidth="187.0"/>
+        <ChoiceBox fx:id="requiredSkillChoice" disable="true" layoutX="173.0" layoutY="270.0" prefHeight="31.0"
+                   prefWidth="187.0"/>
+        <ImageView fitHeight="67.0" fitWidth="57.0" layoutX="529.0" layoutY="21.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../images/exit.png"/>
+            </image>
+        </ImageView>
+    </children>
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+    </padding>
 </AnchorPane>
