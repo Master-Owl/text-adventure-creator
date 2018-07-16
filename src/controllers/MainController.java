@@ -31,7 +31,16 @@ public class MainController extends VBox {
         mainWindow.setTitle(title);
     }
 
-    public boolean displayScene(Scene scene) {
+    public void displayDefaultScene() {
+        try {
+            displayScene(MainLayoutController.getScene());
+            MainLayoutController.controller.initLabels();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void displayScene(Scene scene) {
         try {
             if (!isDisplayingMainScene) {
                 setScene(getMainScene());
@@ -50,9 +59,8 @@ public class MainController extends VBox {
             scenePane.getChildren().clear();
             scenePane.getChildren().add(scene.getRoot());
         } catch (Exception e) {
-            return false;
+            System.out.println(e);
         }
-        return true;
     }
 
     public void setScene(Scene scene) {
@@ -70,7 +78,6 @@ public class MainController extends VBox {
         Node node = (Node) event.getSource();
         return node.getScene().getWindow();
     }
-
 
     private Scene getMainScene() throws Exception {
         if (mainScene == null) {

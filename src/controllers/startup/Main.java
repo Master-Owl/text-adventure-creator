@@ -8,6 +8,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage window) throws Exception {
+        window.setResizable(false);
         MainController.instance.setMainWindow(window);
         MainController.instance.setWindowTitle("Text Adventure Creator");
         MainController.instance.setScene(StartScreenController.getScene());

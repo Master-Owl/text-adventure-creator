@@ -1,6 +1,8 @@
 package controllers;
 
-import controllers.startup.StartScreenController;
+import dataobjects.Room;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +10,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.util.Callback;
 
 public class MainLayoutController {
+
+    public static MainLayoutController controller;
+    private ObservableList<Room> rooms = FXCollections.observableArrayList();
+
+    public void initLabels() {
+        roomCountLabel.setText("Room Count:  " + rooms.size());
+    }
+
+    @FXML
+    private ListView viewingList;
 
     @FXML
     private Button createNewButton;
@@ -37,7 +52,14 @@ public class MainLayoutController {
 
     @FXML
     void displayRooms(ActionEvent event) {
+        viewingList.getItems().clear();
+        rooms.clear();
 
+        Room r = new Room();
+        r.setRoomName("A dummy room value");
+        rooms.add(r);
+        viewingList.setItems(rooms);
+        viewingList.setCellFactory((Callback<ListView<Room>, ListCell<Room>>) list -> new Room());
     }
 
     @FXML
@@ -56,8 +78,11 @@ public class MainLayoutController {
     }
 
     public static Scene getScene() throws Exception {
-        Parent root = FXMLLoader.load(MainLayoutController.class
+        FXMLLoader loader = new FXMLLoader(MainLayoutController.class
                 .getResource("../gui/fxml/main-page-layout.fxml"));
+        loader.load();
+        Parent root = loader.getRoot();
+        controller = loader.getController();
         return new Scene(root);
     }
 

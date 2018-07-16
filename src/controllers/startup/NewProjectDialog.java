@@ -40,19 +40,20 @@ public class NewProjectDialog {
     }
 
     @FXML
-    void createNewProject(ActionEvent event) throws Exception {
+    void createNewProject(ActionEvent event) {
         closeDialog(event);
-        System.out.println("Create new");
-        MainController.instance.displayScene(MainLayoutController.getScene());
+        // TODO: initialize singleton & create new save file
+        MainController.instance.displayDefaultScene();
     }
 
-    public boolean show() {
+    public void show() {
         Parent root;
         try {
             root = FXMLLoader.load(NewProjectDialog.class
                     .getResource("../../gui/fxml/new-project-dialog.fxml"));
         } catch (Exception e) {
-            return false;
+            System.out.println(e);
+            return;
         }
 
         Stage window = new Stage();
@@ -62,6 +63,5 @@ public class NewProjectDialog {
 
         window.setScene(new Scene(root));
         window.show();
-        return true;
     }
 }

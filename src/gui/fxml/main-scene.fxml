@@ -7,34 +7,6 @@
       xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <MenuBar VBox.vgrow="NEVER" id="menuBar">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem id="menu_newProject" mnemonicParsing="false"
-                                  text="New Project"/>
-                        <MenuItem id="menu_openProject" mnemonicParsing="false"
-                                  text="Open Project"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem mnemonicParsing="false" text="Save"/>
-                        <MenuItem mnemonicParsing="false" text="Save As…"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem mnemonicParsing="false" text="Preferences…"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Create">
-                    <items>
-                        <MenuItem id="menu_createRoom" mnemonicParsing="false" text="Room"/>
-                        <MenuItem id="menu_createItem" mnemonicParsing="false" text="Item"/>
-                        <MenuItem id="menu_createNPC" mnemonicParsing="false" text="NPC"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem id="menu_helpInfo" disable="true" mnemonicParsing="false"
-                                  text="About Text Adventure Maker"/>
-                    </items>
-                </Menu>
-            </menus>
         </MenuBar>
         <Pane id="scenePane" minHeight="520.0"/>
     </children>

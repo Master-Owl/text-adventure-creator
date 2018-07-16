@@ -1,9 +1,12 @@
 package controllers.rooms;
 
+import controllers.MainController;
+import controllers.MainLayoutController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -61,7 +64,7 @@ public class RoomEditController {
 
     @FXML
     void cancel(ActionEvent event) {
-
+        MainController.instance.displayDefaultScene();
     }
 
     @FXML
@@ -89,9 +92,10 @@ public class RoomEditController {
 
     }
 
-    public void display() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/room-edit-layout.fxml"));
-
+    public static Scene getScene() throws Exception {
+        Parent root = FXMLLoader.load(RoomEditController.class
+                .getResource("../../gui/fxml/room-edit-layout.fxml"));
+        return new Scene(root);
     }
 
 }
