@@ -11,7 +11,8 @@
 
 
 <AnchorPane maxHeight="360.0" maxWidth="600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.rooms.ExitEditController">
     <children>
         <Label fx:id="exitPageLabel" layoutX="25.0" layoutY="26.0" text="New Exit" textFill="#0d6516"
                AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -51,13 +52,13 @@
             </font>
         </CheckBox>
         <Button fx:id="saveButton" layoutX="502.0" layoutY="309.0" mnemonicParsing="false" prefHeight="37.0"
-                prefWidth="74.0" text="Save">
+                prefWidth="74.0" text="Save" onAction="#save">
             <font>
                 <Font size="16.0"/>
             </font>
         </Button>
         <Button fx:id="cancelButton" layoutX="415.0" layoutY="309.0" mnemonicParsing="false" prefHeight="37.0"
-                prefWidth="74.0" text="Cancel">
+                prefWidth="74.0" text="Cancel" onAction="#cancel">
             <font>
                 <Font size="16.0"/>
             </font>

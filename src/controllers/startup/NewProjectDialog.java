@@ -1,5 +1,7 @@
-package gui.startup;
+package controllers.startup;
 
+import controllers.MainController;
+import controllers.MainLayoutController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,14 @@ public class NewProjectDialog {
     private String newProjectName;
     private String creatorName;
 
+    public String getProjectName() {
+        return newProjectName;
+    }
+
+    public String getCreatorName() {
+        return creatorName;
+    }
+
     @FXML
     private TextField newProjectNameField;
 
@@ -26,16 +36,24 @@ public class NewProjectDialog {
     void closeDialog(ActionEvent event) {
         newProjectName = newProjectNameField.getText();
         creatorName = creatorNameField.getText();
-        Main.CloseActiveWindow(event);
+        MainController.CloseActiveWindow(event);
     }
 
     @FXML
-    void createNewProject(ActionEvent event) {
+    void createNewProject(ActionEvent event) throws Exception {
         closeDialog(event);
+        System.out.println("Create new");
+        MainController.instance.displayScene(MainLayoutController.getScene());
     }
 
-    public void show() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/new-project-dialog.fxml"));
+    public boolean show() {
+        Parent root;
+        try {
+            root = FXMLLoader.load(NewProjectDialog.class
+                    .getResource("../../gui/fxml/new-project-dialog.fxml"));
+        } catch (Exception e) {
+            return false;
+        }
 
         Stage window = new Stage();
         window.initStyle(StageStyle.UTILITY);
@@ -43,6 +61,7 @@ public class NewProjectDialog {
         window.setTitle("Create New Project");
 
         window.setScene(new Scene(root));
-        window.showAndWait();
+        window.show();
+        return true;
     }
 }

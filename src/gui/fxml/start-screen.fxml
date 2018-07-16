@@ -11,7 +11,7 @@
 
 
 <GridPane prefHeight="448.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="gui.startup.StartScreenController">
+          fx:controller="controllers.startup.StartScreenController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
     </columnConstraints>
