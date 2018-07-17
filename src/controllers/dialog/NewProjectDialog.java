@@ -1,7 +1,6 @@
-package controllers.startup;
+package controllers.dialog;
 
 import controllers.MainController;
-import controllers.MainLayoutController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,37 +10,28 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Model;
 
 public class NewProjectDialog {
-
-    private String newProjectName;
-    private String creatorName;
-
-    public String getProjectName() {
-        return newProjectName;
-    }
-
-    public String getCreatorName() {
-        return creatorName;
-    }
 
     @FXML
     private TextField newProjectNameField;
 
-    @FXML
-    private TextField creatorNameField;
-
 
     @FXML
     void closeDialog(ActionEvent event) {
-        newProjectName = newProjectNameField.getText();
-        creatorName = creatorNameField.getText();
         MainController.CloseActiveWindow(event);
     }
 
     @FXML
     void createNewProject(ActionEvent event) {
+        if (newProjectNameField.getText().equals("")) {
+            AlertDialog dialog = new AlertDialog("Oops!", "You need to name your project.");
+            dialog.show();
+            return;
+        }
         closeDialog(event);
+        Model.instance.setProjectName(newProjectNameField.getText());
         // TODO: initialize singleton & create new save file
         MainController.instance.displayDefaultScene();
     }
@@ -52,7 +42,7 @@ public class NewProjectDialog {
             root = FXMLLoader.load(NewProjectDialog.class
                     .getResource("../../gui/fxml/new-project-dialog.fxml"));
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
             return;
         }
 

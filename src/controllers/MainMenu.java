@@ -1,16 +1,20 @@
 package controllers;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import model.Model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainMenu {
 
+    private Stage window;
     private Menu fileMenu;
     private Menu createMenu;
     private Menu helpMenu;
@@ -34,8 +38,8 @@ public class MainMenu {
     private MenuItem createItem;
 
     // TODO: set up all the onAction events
-    public void initMenu() {
-
+    public void initMenu(Stage mainWindow) {
+        window = mainWindow;
         fileMenu = new Menu("File");
 
         newProject = new MenuItem("New Project");
@@ -45,8 +49,10 @@ public class MainMenu {
         openProject.setOnAction(this::openProjectDialog);
 
         saveProject = new MenuItem("Save Project");
+        saveProject.setOnAction(this::saveProject);
 
         saveProjectAs = new MenuItem("Save Project As...");
+        saveProjectAs.setOnAction(this::saveProjectAs);
 
         preferences = new MenuItem("Preferences");
 
@@ -85,5 +91,27 @@ public class MainMenu {
 
     void openProjectDialog(ActionEvent event) {
         System.out.println("So ya wanna open an ol' project, eh?");
+    }
+
+    void saveProject(ActionEvent event) {
+        Model.SaveProject();
+    }
+
+    void saveProjectAs(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter for text files
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("Text Adventure Project", "*.tap");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        //Show save file dialog
+        File file = fileChooser.showSaveDialog(window);
+
+        if (file != null) {
+            Model.instance.setSaveFileName(file.getName());
+            System.out.println("Path: " + file.getAbsolutePath());
+            Model.SaveProject(file.getAbsolutePath());
+        }
     }
 }

@@ -49,7 +49,7 @@ public class MainController extends VBox {
                 }
                 if (menu == null) {
                     menu = new MainMenu();
-                    menu.initMenu();
+                    menu.initMenu(mainWindow);
                     menuBar = (MenuBar) mainScene.lookup("#menuBar");
                     menuBar.getMenus().clear();
                     menuBar.getMenus().addAll(menu.getMenu());

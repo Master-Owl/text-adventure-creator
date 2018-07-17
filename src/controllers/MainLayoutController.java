@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
+import model.Model;
 
 public class MainLayoutController {
 
@@ -20,6 +21,7 @@ public class MainLayoutController {
     private ObservableList<Room> rooms = FXCollections.observableArrayList();
 
     public void initLabels() {
+        projectName.setText(Model.instance.getProjectName());
         roomCountLabel.setText("Room Count:  " + rooms.size());
     }
 
