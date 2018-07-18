@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.rooms.RoomEditController;
 import dataobjects.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +23,7 @@ public class MainLayoutController {
 
     public void initLabels() {
         projectName.setText(Model.instance.getProjectName());
-        roomCountLabel.setText("Room Count:  " + rooms.size());
+        roomCountLabel.setText("Room Count:  " + Model.instance.getRooms().size());
     }
 
     @FXML
@@ -54,24 +55,36 @@ public class MainLayoutController {
 
     @FXML
     void displayRooms(ActionEvent event) {
-        viewingList.getItems().clear();
         rooms.clear();
+        rooms.addAll(Model.instance.getRooms());
 
-        Room r = new Room();
-        r.setRoomName("A dummy room value");
-        rooms.add(r);
+        viewingList.getItems().clear();
         viewingList.setItems(rooms);
         viewingList.setCellFactory((Callback<ListView<Room>, ListCell<Room>>) list -> new Room());
+        viewingList.setOnMouseClicked(mouseEvent -> {
+            if (mouseEvent.getClickCount() == 2) {
+                //Use ListView's getSelected Item
+                Room selectedRoom = (Room)viewingList.getSelectionModel().getSelectedItem();
+                if (selectedRoom != null) {
+                    try {
+                        MainController.instance.displayScene(RoomEditController.getScene());
+                        RoomEditController.currentInstance.setRoomValues(selectedRoom);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     @FXML
     void displayItems(ActionEvent event) {
-
+        viewingList.getItems().clear();
     }
 
     @FXML
     void displayNpcs(ActionEvent event) {
-
+        viewingList.getItems().clear();
     }
 
     @FXML

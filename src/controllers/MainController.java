@@ -59,7 +59,7 @@ public class MainController extends VBox {
             scenePane.getChildren().clear();
             scenePane.getChildren().add(scene.getRoot());
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 

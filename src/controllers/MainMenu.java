@@ -1,5 +1,7 @@
 package controllers;
 
+import controllers.rooms.RoomEditController;
+import dataobjects.Room;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -68,6 +70,7 @@ public class MainMenu {
         createMenu = new Menu("Create");
 
         createRoom = new MenuItem("Room");
+        createRoom.setOnAction(this::createRoom);
 
         createItem = new MenuItem("Item");
 
@@ -109,9 +112,18 @@ public class MainMenu {
         File file = fileChooser.showSaveDialog(window);
 
         if (file != null) {
-            Model.instance.setSaveFileName(file.getName());
+            Model.instance.setSaveFilePath(file.getName());
             System.out.println("Path: " + file.getAbsolutePath());
             Model.SaveProject(file.getAbsolutePath());
         }
+    }
+
+    void createRoom(ActionEvent event) {
+        try {
+            MainController.instance.displayScene(RoomEditController.getScene());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
