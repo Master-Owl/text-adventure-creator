@@ -97,7 +97,10 @@ public class MainMenu {
     }
 
     void saveProject(ActionEvent event) {
-        Model.SaveProject();
+        if (Model.instance.hasBeenSaved())
+            Model.SaveProject();
+        else
+            saveProjectAs(event);
     }
 
     void saveProjectAs(ActionEvent event) {

@@ -26,6 +26,8 @@ public class Model implements Serializable {
         System.out.println("Loaded!");
     }
 
+    public boolean hasBeenSaved() { return instance.saveFilePath != null; }
+
     public static void SaveProject() {
         if (instance.saveFilePath == null) {
             instance.saveFilePath = "~/Desktop/" + instance.projectName;

@@ -89,9 +89,14 @@ public class RoomEditController {
     @FXML
     void saveRoom(ActionEvent event) {
         if (!checkForErrors()) return;
-        if (!editingExistingRoom)
+        if (!editingExistingRoom) {
             room = new Room(roomNameField.getText(),
                     roomDescriptionArea.getText());
+        }
+        else {
+            room.setRoomName(roomNameField.getText());
+            room.setRoomDescription(roomDescriptionArea.getText());
+        }
 
         room.setItems(itemList.getItems());
         room.setNpcs(npcList.getItems());
