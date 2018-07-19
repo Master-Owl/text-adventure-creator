@@ -68,7 +68,7 @@ public class MainLayoutController {
                 if (selectedRoom != null) {
                     try {
                         MainController.instance.displayScene(RoomEditController.getScene());
-                        RoomEditController.currentInstance.setRoomValues(selectedRoom);
+                        RoomEditController.currentInstance.setRoom(selectedRoom);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

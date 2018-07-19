@@ -90,7 +90,7 @@ public class Room extends ListCell<Room> implements Serializable {
         String displayText = null;
 
         if (room != null && !empty) {
-            displayText = room.getRoomName();
+            displayText = room.toString();
         }
 
         this.setText(displayText);
@@ -102,5 +102,10 @@ public class Room extends ListCell<Room> implements Serializable {
         if (obj == null) return false;
         if (!obj.getClass().equals(this.getClass())) return false;
         return this.roomId == ((Room)obj).roomId;
+    }
+
+    @Override
+    public String toString() {
+        return this.roomName;
     }
 }

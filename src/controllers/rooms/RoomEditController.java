@@ -6,18 +6,15 @@ import controllers.dialog.AlertDialog;
 import controllers.dialog.ConfirmDialog;
 import dataobjects.Exit;
 import dataobjects.Room;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
+import javafx.util.Callback;
 import model.Model;
 
 public class RoomEditController {
@@ -37,7 +34,7 @@ public class RoomEditController {
     private ListView<?> enemyList;
 
     @FXML
-    private TitledPane addExitButton;
+    private Button addExitButton;
 
     @FXML
     private ListView<?> containerItemList;
@@ -131,7 +128,15 @@ public class RoomEditController {
 
     @FXML
     void addExitToRoom(ActionEvent event) {
-
+        try {
+            MainController.instance.displayScene(ExitEditController.getScene());
+            if (room == null) {
+                room = new Room(roomNameField.getText(), roomDescriptionArea.getText());
+            }
+            ExitEditController.currentInstance.setFromRoom(room);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -164,7 +169,8 @@ public class RoomEditController {
         roomNameField.requestFocus();
     }
 
-    public void setRoomValues(Room room) {
+    public void setRoom(Room room) {
+        if (room == null) return;
         this.room = room;
         editingExistingRoom = true;
         deleteRoomButton.setVisible(true);
@@ -172,6 +178,27 @@ public class RoomEditController {
         roomPageLabel.setText("Edit Room: " + room.getRoomName());
         roomNameField.setText(room.getRoomName());
         roomDescriptionArea.setText(room.getRoomDescription());
+
+        // Set Exits
+        ObservableList<Exit> exits = FXCollections.observableArrayList();
+        exits.addAll(room.getExits().values());
+        exitList.setItems(exits);
+        exitList.setCellFactory(list -> new Exit());
+        exitList.setOnMouseClicked(mouseEvent -> {
+            if (mouseEvent.getClickCount() == 2) {
+                //Use ListView's getSelected Item
+                Exit selectedExit = exitList.getSelectionModel().getSelectedItem();
+                if (selectedExit != null) {
+                    try {
+                        MainController.instance.displayScene(ExitEditController.getScene());
+                        ExitEditController.currentInstance.setExit(selectedExit);
+                        ExitEditController.currentInstance.setFromRoom(room);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     private boolean checkForErrors() {
