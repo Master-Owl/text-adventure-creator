@@ -17,6 +17,8 @@ public abstract class IItem extends ListCell<IItem> {
     @Override
     protected void updateItem(IItem item, boolean empty) {
         super.updateItem(item, empty);
+        this.setGraphic(null);
+
         String displayText = null;
 
         if (item != null && !empty) {
@@ -24,7 +26,6 @@ public abstract class IItem extends ListCell<IItem> {
         }
 
         this.setText(displayText);
-        this.setGraphic(null);
     }
 
     @Override
