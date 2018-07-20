@@ -13,6 +13,7 @@ public class Room extends ListCell<Room> implements Serializable {
 
     private String roomName;
     private String roomDescription;
+    private Area area;
     private int roomId;
     private static int idCounter = -1;
 
@@ -66,19 +67,18 @@ public class Room extends ListCell<Room> implements Serializable {
     public void setItems(List<?> allItems){}
     public void setNpcs(List<?> allNpcs){}
     public void setEnemies(List<?> allEnemies){}
+    public void setArea(Area area) { this.area = area; }
 
+    public Area getArea() { return area; }
     public HashMap<String, Exit> getExits() {
         return exits;
     }
-
     public ArrayList<?> getItems() {
         return items;
     }
-
     public ArrayList<?> getNpcs() {
         return npcs;
     }
-
     public ArrayList<?> getEnemies() {
         return enemies;
     }

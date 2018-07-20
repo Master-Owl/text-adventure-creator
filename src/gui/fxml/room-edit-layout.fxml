@@ -40,7 +40,7 @@
     <children>
         <Label fx:id="roomPageLabel" text="Create New Room" textFill="#5b1414" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.valignment="TOP">
             <GridPane.margin>
-                <Insets />
+                <Insets top="12.0" />
             </GridPane.margin>
             <font>
                 <Font name="High Tower Text" size="50.0" />
@@ -165,6 +165,22 @@
             <Font name="Arial Bold Italic" size="18.0" />
          </font>
       </Button>
+      <ChoiceBox fx:id="areaChoiceBox" prefHeight="25.0" prefWidth="417.0" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </ChoiceBox>
+      <Label layoutX="30.0" layoutY="20.0" text="Area" textFill="#5b1414" GridPane.rowIndex="3" GridPane.valignment="TOP">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+         </effect>
+         <font>
+            <Font name="High Tower Text" size="26.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="10.0" />
+         </GridPane.margin>
+      </Label>
     </children>
     <padding>
         <Insets bottom="30.0" left="20.0" right="20.0" top="10.0" />

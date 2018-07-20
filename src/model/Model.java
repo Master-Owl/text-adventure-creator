@@ -1,9 +1,11 @@
 package model;
 
+import dataobjects.Area;
 import dataobjects.Room;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.TreeMap;
 
@@ -16,6 +18,7 @@ public class Model implements Serializable {
 
     private Model(){}
     private TreeMap<Integer, Room> rooms = new TreeMap<>();
+    private ArrayList<Area> areas = new ArrayList<>();
 
     private String projectName;
     private String saveFilePath = null;
@@ -35,7 +38,6 @@ public class Model implements Serializable {
         ReadWrite.WriteToFile(instance, instance.saveFilePath);
         System.out.println("Saved to " + instance.saveFilePath);
     }
-
     public static void SaveProject(String filepath) {
         instance.saveFilePath = filepath;
         SaveProject();
@@ -82,5 +84,15 @@ public class Model implements Serializable {
     public Collection<Room> getRooms() {
         return rooms.values();
     }
+
+    public void addArea(Area area) {
+        areas.add(area);
+    }
+    public Area getArea(int index) {
+        if (areas.size() > index)
+            return areas.get(index);
+        return null;
+    }
+    public ArrayList<Area> getAreas() { return areas; }
 
 }

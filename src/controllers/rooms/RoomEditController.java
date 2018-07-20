@@ -4,6 +4,7 @@ import controllers.MainController;
 import controllers.MainLayoutController;
 import controllers.dialog.AlertDialog;
 import controllers.dialog.ConfirmDialog;
+import dataobjects.Area;
 import dataobjects.Exit;
 import dataobjects.Room;
 import javafx.collections.FXCollections;
@@ -29,6 +30,9 @@ public class RoomEditController {
         editingExistingRoom = false;
         roomNameField.requestFocus();
     }
+
+    @FXML
+    private ChoiceBox<Area> areaChoiceBox;
 
     @FXML
     private ListView<?> enemyList;
@@ -174,6 +178,11 @@ public class RoomEditController {
         this.room = room;
         editingExistingRoom = true;
         deleteRoomButton.setVisible(true);
+
+        Area area = room.getArea();
+        if (area != null) {
+            areaChoiceBox.setValue(area);
+        }
 
         roomPageLabel.setText("Edit Room: " + room.getRoomName());
         roomNameField.setText(room.getRoomName());

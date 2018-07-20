@@ -43,19 +43,11 @@
       <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
    <children>
-      <Label fx:id="projectName" text="[Project Name]" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BASELINE">
+      <Label fx:id="projectName" text="[Project Name]" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowSpan="2" GridPane.valignment="TOP">
          <font>
-            <Font name="Pristina" size="43.0" />
+            <Font name="Segoe UI Light" size="46.0" />
          </font>
       </Label>
-      <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <padding>
-            <Insets left="50.0" right="50.0" />
-         </padding>
-         <effect>
-            <Shadow blurType="ONE_PASS_BOX" color="#4a0f61" height="1.0" radius="0.0" width="1.0" />
-         </effect>
-      </Separator>
       <SplitPane dividerPositions="0.2427685950413223" prefHeight="160.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" GridPane.rowSpan="2">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
