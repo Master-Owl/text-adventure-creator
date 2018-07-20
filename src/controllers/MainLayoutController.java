@@ -1,7 +1,7 @@
 package controllers;
 
-import controllers.rooms.RoomEditController;
-import dataobjects.Room;
+import dataobjects.Area;
+import dataobjects.items.BaseItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,66 +9,54 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.util.Callback;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import model.Model;
 
 public class MainLayoutController {
 
     public static MainLayoutController controller;
-    private ObservableList<Room> rooms = FXCollections.observableArrayList();
+    private ObservableList<Area> areas = FXCollections.observableArrayList();
+    private ObservableList<BaseItem> items = FXCollections.observableArrayList();
 
-    public void initLabels() {
+    public void initPage() {
         projectName.setText(Model.instance.getProjectName());
-        roomCountLabel.setText("Room Count:  " + Model.instance.getRooms().size());
-    }
+        areaCountLabel.setText("Area Count: " + Model.instance.getAreas().size());
+        itemCountLabel.setText("Item Count: " + Model.instance.getItems().size());
 
-    @FXML
-    private ListView viewingList;
-
-    @FXML
-    private Button createNewButton;
-
-    @FXML
-    private Label roomCountLabel;
-
-    @FXML
-    private Label npcCountLabel;
-
-    @FXML
-    private Label projectName;
-
-    @FXML
-    private Button viewRoomsButton;
-
-    @FXML
-    private Button viewItemsButton;
-
-    @FXML
-    private Button viewNpcsButton;
-
-    @FXML
-    private Label itemCountLabel;
-
-    @FXML
-    void displayRooms(ActionEvent event) {
-        rooms.clear();
-        rooms.addAll(Model.instance.getRooms());
-
-        viewingList.getItems().clear();
-        viewingList.setItems(rooms);
-        viewingList.setCellFactory((Callback<ListView<Room>, ListCell<Room>>) list -> new Room());
-        viewingList.setOnMouseClicked(mouseEvent -> {
+        areas.clear();
+        areas.addAll(Model.instance.getAreas());
+        areasList.getItems().clear();
+        areasList.setItems(areas);
+        areasList.setCellFactory(list -> new Area());
+        areasList.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getClickCount() == 2) {
-                //Use ListView's getSelected Item
-                Room selectedRoom = (Room)viewingList.getSelectionModel().getSelectedItem();
-                if (selectedRoom != null) {
+                Area selectedArea = areasList.getSelectionModel().getSelectedItem();
+                if (selectedArea != null) {
                     try {
-                        MainController.instance.displayScene(RoomEditController.getScene());
-                        RoomEditController.currentInstance.setRoom(selectedRoom);
+                        // TODO: Make AreaEditController and hook it up here
+//                        MainController.instance.displayScene(RoomEditController.getScene());
+//                        RoomEditController.currentInstance.setRoom(selectedArea);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        items.clear();
+        items.addAll(Model.instance.getItems());
+        itemsList.getItems().clear();
+        itemsList.setItems(items);
+        itemsList.setCellFactory(list -> new BaseItem());
+        itemsList.setOnMouseClicked(mouseEvent -> {
+            if (mouseEvent.getClickCount() == 2) {
+                BaseItem selectedItem = itemsList.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) {
+                    try {
+                        // TODO: Make ItemEditController and hook it up here
+//                        MainController.instance.displayScene(RoomEditController.getScene());
+//                        RoomEditController.currentInstance.setRoom(selectedItem);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -78,17 +66,76 @@ public class MainLayoutController {
     }
 
     @FXML
-    void displayItems(ActionEvent event) {
-        viewingList.getItems().clear();
+    private Label npcCountLabel;
+
+    @FXML
+    private ListView<Area> areasList;
+
+    @FXML
+    private Button editProjectNameButton;
+
+    @FXML
+    private Button createAreaButton;
+
+    @FXML
+    private Label itemCountLabel;
+
+    @FXML
+    private Button createNpcButton;
+
+    @FXML
+    private TextField editProjectNameField;
+
+    @FXML
+    private ListView<?> npcsList;
+
+    @FXML
+    private ListView<BaseItem> itemsList;
+
+    @FXML
+    private Button createItemButton;
+
+    @FXML
+    private Label areaCountLabel;
+
+    @FXML
+    private Label projectName;
+
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    void createNewArea(ActionEvent event) {
+
     }
 
     @FXML
-    void displayNpcs(ActionEvent event) {
-        viewingList.getItems().clear();
+    void createNewItem(ActionEvent event) {
+
     }
 
     @FXML
-    void openCreateNewDialog(ActionEvent event) {
+    void createNewNpc(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveProject(ActionEvent event) {
+        Model.SaveProject();
+    }
+
+    @FXML
+    void saveProjectOpaque(MouseEvent event) {
+        saveButton.setOpacity(1);
+    }
+
+    @FXML
+    void saveProjectTransparent(MouseEvent event) {
+        saveButton.setOpacity(0.65);
+    }
+
+    @FXML
+    void editProjectName(ActionEvent event) {
 
     }
 

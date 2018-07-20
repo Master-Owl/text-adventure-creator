@@ -1,143 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainLayoutController">
-  <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="93.0" minHeight="0.0" prefHeight="55.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="196.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="115.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="124.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-   </padding>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="controllers.MainLayoutController">
    <children>
-      <Label fx:id="projectName" text="[Project Name]" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowSpan="2" GridPane.valignment="TOP">
+      <Label fx:id="projectName" layoutX="14.0" layoutY="14.0" prefHeight="60.0" prefWidth="294.0" text="Project Name" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
-            <Font name="Segoe UI Light" size="46.0" />
+            <Font name="Lane - Narrow" size="50.0" />
          </font>
       </Label>
-      <SplitPane dividerPositions="0.2427685950413223" prefHeight="160.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" GridPane.rowSpan="2">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="237.0" prefWidth="284.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Button fx:id="viewRoomsButton" graphicTextGap="6.0" mnemonicParsing="false" onAction="#displayRooms" prefHeight="40.0" prefWidth="170.0" text="View Rooms">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" translateX="-1.0">
-                                 <image>
-                                    <Image url="@../images/map-marker.png" />
-                                 </image>
-                                 <viewport>
-                                    <Rectangle2D />
-                                 </viewport>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="viewItemsButton" graphicTextGap="6.0" mnemonicParsing="false" onAction="#displayItems" prefHeight="40.0" prefWidth="170.0" text="View Items">
-                           <graphic>
-                              <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-4.0">
-                                 <image>
-                                    <Image url="@../images/item.png" />
-                                 </image>
-                                 <viewport>
-                                    <Rectangle2D />
-                                 </viewport>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="viewNpcsButton" graphicTextGap="6.0" mnemonicParsing="false" onAction="#displayNpcs" prefHeight="40.0" prefWidth="170.0" text="View NPCs">
-                           <graphic>
-                              <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
-                                 <image>
-                                    <Image url="@../images/character.png" />
-                                 </image>
-                                 <viewport>
-                                    <Rectangle2D />
-                                 </viewport>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <ListView fx:id="viewingList" prefHeight="237.0" prefWidth="729.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
-         <GridPane.margin>
-            <Insets top="20.0" />
-         </GridPane.margin>
+      <GridPane layoutX="362.0" layoutY="17.0" prefHeight="489.0" prefWidth="624.0" AnchorPane.topAnchor="20.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="312.0" minHeight="10.0" prefHeight="153.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="167.0" minHeight="10.0" prefHeight="162.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="145.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Label fx:id="roomCountLabel" text="Room Count:">
+            <Label fx:id="areaCountLabel" text="Area Count: 0">
                <font>
-                  <Font name="Poor Richard" size="35.0" />
+                  <Font name="Lane - Narrow" size="28.0" />
                </font>
             </Label>
-            <Separator orientation="VERTICAL" prefWidth="60.0">
-               <padding>
-                  <Insets bottom="22.0" top="28.0" />
-               </padding>
-            </Separator>
-            <Label fx:id="itemCountLabel" layoutX="10.0" layoutY="40.0" text="Item Count:">
+            <Label fx:id="itemCountLabel" text="Item Count: 0" GridPane.columnIndex="1">
                <font>
-                  <Font name="Poor Richard" size="35.0" />
+                  <Font name="Lane - Narrow" size="28.0" />
                </font>
             </Label>
-            <Separator layoutX="188.0" layoutY="10.0" orientation="VERTICAL" prefWidth="60.0">
-               <padding>
-                  <Insets bottom="22.0" top="28.0" />
-               </padding>
-            </Separator>
-            <Label fx:id="npcCountLabel" layoutX="258.0" layoutY="40.0" text="NPC Count:">
+            <Label fx:id="npcCountLabel" text="NPC Count: 0" GridPane.columnIndex="2">
                <font>
-                  <Font name="Poor Richard" size="35.0" />
+                  <Font name="Lane - Narrow" size="28.0" />
                </font>
             </Label>
+            <Button fx:id="createAreaButton" mnemonicParsing="false" onAction="#createNewArea" text="Create New Area" GridPane.rowIndex="1" />
+            <Button fx:id="createItemButton" mnemonicParsing="false" onAction="#createNewItem" text="Create New Item" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="createNpcButton" mnemonicParsing="false" onAction="#createNewNpc" text="Create New NPC" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveProject" onMouseEntered="#saveProjectOpaque" onMouseExited="#saveProjectTransparent" opacity="0.65" text="Save Project" textFill="#a1800d" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="Microsoft Tai Le" size="18.0" />
+               </font>
+            </Button>
+            <ListView fx:id="areasList" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" GridPane.rowSpan="2">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </ListView>
+            <ListView fx:id="itemsList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </ListView>
+            <ListView fx:id="npcsList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </ListView>
          </children>
-      </HBox>
+      </GridPane>
+      <TextField fx:id="editProjectNameField" disable="true" layoutX="15.0" layoutY="91.0" prefHeight="34.0" prefWidth="283.0" promptText="Project Name" text="[old project name]" visible="false" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="28.0">
+         <font>
+            <Font name="Lane - Narrow" size="20.0" />
+         </font>
+      </TextField>
+      <Button fx:id="editProjectNameButton" contentDisplay="GRAPHIC_ONLY" layoutX="309.0" layoutY="21.0" mnemonicParsing="false" onAction="#editProjectName">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/pencil.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
-</GridPane>
+</AnchorPane>

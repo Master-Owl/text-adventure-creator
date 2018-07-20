@@ -1,6 +1,8 @@
 package dataobjects.items;
 
-public class Weapon extends IItem {
+public class Weapon extends BaseItem {
+    private static final long serialVersionUID = 4108717989118604611L;
+
     public enum Type { MELEE, RANGED, MAGIC }
 
     private int attackPower = 0;

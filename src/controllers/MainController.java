@@ -34,9 +34,9 @@ public class MainController extends VBox {
     public void displayDefaultScene() {
         try {
             displayScene(MainLayoutController.getScene());
-            MainLayoutController.controller.initLabels();
+            MainLayoutController.controller.initPage();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 

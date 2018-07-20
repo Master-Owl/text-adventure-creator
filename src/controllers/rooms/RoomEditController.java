@@ -1,7 +1,6 @@
 package controllers.rooms;
 
 import controllers.MainController;
-import controllers.MainLayoutController;
 import controllers.dialog.AlertDialog;
 import controllers.dialog.ConfirmDialog;
 import dataobjects.Area;
@@ -15,7 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 import model.Model;
 
 public class RoomEditController {
@@ -104,9 +102,10 @@ public class RoomEditController {
         room.setEnemies(enemyList.getItems());
         room.setExits(exitList.getItems());
 
-        if (editingExistingRoom)
-            Model.instance.updateRoom(room.roomId(), room);
-        else
+        if (areaChoiceBox.getValue() != null)
+            areaChoiceBox.getValue().addRoom(room);
+
+        if (!editingExistingRoom)
             Model.instance.addRoom(room);
 
         clearFields();

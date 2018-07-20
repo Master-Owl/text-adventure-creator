@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Container extends IItem {
-    private TreeMap<String, ArrayList<IItem>> items;
+public class Container extends BaseItem {
+    private static final long serialVersionUID = -4670927727628926183L;
+
+    private TreeMap<String, ArrayList<BaseItem>> items;
     private int maxSize = -1;
 
     public Container(String itemName, String itemDescription) {
@@ -21,20 +23,20 @@ public class Container extends IItem {
 
     public void setMaxSize(int maxSize) { this.maxSize = maxSize; }
 
-    public IItem getItem(String itemName) {
-        IItem item = items.get(itemName).get(0);
+    public BaseItem getItem(String itemName) {
+        BaseItem item = items.get(itemName).get(0);
         items.get(itemName).remove(0);
         if (items.get(itemName).size() == 0)
             items.remove(itemName);
         return item;
     }
 
-    public boolean addItem(IItem item) {
+    public boolean addItem(BaseItem item) {
         if (getTotalItemCount() >= maxSize)
             return false;
 
         if (!items.containsKey(item.itemName)) {
-            ArrayList<IItem> itemList = new ArrayList<>();
+            ArrayList<BaseItem> itemList = new ArrayList<>();
             itemList.add(item);
             items.put(item.itemName, itemList);
         }
@@ -47,7 +49,7 @@ public class Container extends IItem {
 
     private int getTotalItemCount() {
         int count = 0;
-        for (Map.Entry<String, ArrayList<IItem>> entry : items.entrySet()) {
+        for (Map.Entry<String, ArrayList<BaseItem>> entry : items.entrySet()) {
             count += entry.getValue().size();
         }
         return count;
