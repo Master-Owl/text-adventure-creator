@@ -19,12 +19,15 @@ public class MainMenu {
     private Stage window;
     private Menu fileMenu;
     private Menu createMenu;
+    private Menu viewMenu;
     private Menu helpMenu;
+
 
     public List<Menu> getMenu() {
         List<Menu> menuList =  new ArrayList<>();
         menuList.add(fileMenu);
         menuList.add(createMenu);
+        menuList.add(viewMenu);
         menuList.add(helpMenu);
         return menuList;
     }
@@ -79,6 +82,12 @@ public class MainMenu {
         createMenu.getItems().add(createRoom);
         createMenu.getItems().add(createItem);
         createMenu.getItems().add(createNPC);
+
+
+        MenuItem viewAllRooms = new MenuItem("View All Rooms");
+        viewAllRooms.setDisable(true);
+        viewMenu = new Menu("View");
+        viewMenu.getItems().add(viewAllRooms);
 
 
         helpMenu = new Menu("Help");

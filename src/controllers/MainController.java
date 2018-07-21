@@ -82,7 +82,8 @@ public class MainController extends VBox {
         mainWindow.show();
     }
     public Scene displayPreviousScene() {
-        if (sceneHistory.size() == 0) {
+        if (sceneHistory.size() == 1) {
+            sceneHistory.pop();
             displayDefaultScene();
             return sceneHistory.peek(); // Returns current scene
         }

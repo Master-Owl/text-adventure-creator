@@ -1,9 +1,11 @@
 package dataobjects;
 
 import javafx.scene.control.ListCell;
+import model.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Area extends ListCell<Area> implements Serializable {
     private static final long serialVersionUID = 2624796104215123411L;
@@ -14,6 +16,7 @@ public class Area extends ListCell<Area> implements Serializable {
     public Area(){}
     public Area(String name) {
         areaName = name;
+        Model.instance.addArea(this);
     }
 
     public void setAreaName(String name) { areaName = name; }
@@ -23,8 +26,8 @@ public class Area extends ListCell<Area> implements Serializable {
         if (!rooms.contains(room))
             rooms.add(room);
     }
-    public void setRooms(ArrayList<Room> rooms) {
-        this.rooms = rooms;
+    public void setRooms(Collection<Room> rooms) {
+        this.rooms = new ArrayList<>(rooms);
     }
     public ArrayList<Room> getRooms() { return rooms; }
     public Room getRoom(int index) {
@@ -49,7 +52,7 @@ public class Area extends ListCell<Area> implements Serializable {
         String displayText = null;
 
         if (area != null && !empty) {
-            displayText = area.areaName + " (" + rooms.size() + ")";
+            displayText = area.areaName + " (" + area.rooms.size() + ")";
         }
 
         this.setText(displayText);

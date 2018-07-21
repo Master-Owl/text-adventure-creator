@@ -37,9 +37,8 @@ public class MainLayoutController {
                 Area selectedArea = areasList.getSelectionModel().getSelectedItem();
                 if (selectedArea != null) {
                     try {
-                        // TODO: Make AreaEditController and hook it up here
-//                        MainController.instance.displayScene(RoomEditController.getScene());
-//                        RoomEditController.currentInstance.setRoom(selectedArea);
+                        MainController.instance.displayScene(AreaEditController.getScene());
+                        AreaEditController.currentInstance.setArea(selectedArea);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

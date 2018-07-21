@@ -20,6 +20,7 @@ public class StartScreenController {
 
     private NewProjectDialog newProjectDialog = new NewProjectDialog();
 
+    // TODO: make this recent project list work
     @FXML
     private ListView recentProjectsList;
 

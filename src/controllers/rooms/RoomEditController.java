@@ -24,8 +24,14 @@ public class RoomEditController {
 
     @FXML
     public void initialize() {
+        System.out.println("Init room page");
         currentInstance = this;
         editingExistingRoom = false;
+
+        ObservableList<Area> areas =  FXCollections.observableArrayList();
+        areas.setAll(Model.instance.getAreas());
+        areaChoiceBox.setItems(areas);
+
         roomNameField.requestFocus();
     }
 
@@ -79,7 +85,9 @@ public class RoomEditController {
 
     @FXML
     void cancel(ActionEvent event) {
-        MainController.instance.displayPreviousScene();
+        Scene previous = MainController.instance.displayPreviousScene();
+        if (previous.lookup("#areaPageLabel") != null && room != null)
+            AreaEditController.currentInstance.setArea(room.getArea());
     }
 
     @FXML
@@ -94,20 +102,21 @@ public class RoomEditController {
             room.setRoomDescription(roomDescriptionArea.getText());
         }
 
+        room.setArea(areaChoiceBox.getValue());
         room.setItems(itemList.getItems());
         room.setNpcs(npcList.getItems());
         room.setEnemies(enemyList.getItems());
         room.setExits(exitList.getItems());
+        // Room is saved automatically b/c it's registered
+        //  with the model in its constructor, then passed by
+        //  reference around the project
 
-        if (areaChoiceBox.getValue() != null)
-            areaChoiceBox.getValue().addRoom(room);
-
-        if (!editingExistingRoom)
-            Model.instance.addRoom(room);
+        if (room.getArea() != null)
+            room.getArea().addRoom(room);
 
         clearFields();
         if (!makeAnotherCheckbox.isSelected()) {
-            MainController.instance.displayDefaultScene();
+            cancel(event);
         }
     }
 
@@ -204,6 +213,11 @@ public class RoomEditController {
                 }
             }
         });
+    }
+
+    public void setRoomArea(Area area) {
+        System.out.println("Set room area");
+        areaChoiceBox.setValue(area);
     }
 
     private boolean checkForErrors() {

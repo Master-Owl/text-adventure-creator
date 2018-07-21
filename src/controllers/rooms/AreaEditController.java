@@ -31,9 +31,10 @@ public class AreaEditController {
     }
 
     public void setArea(Area area) {
+        if (area == null) return;
         this.area = area;
 
-        areaNameField.setText(area.getAreaName());
+        areaNameField.setText("Edit Area: " +area.getAreaName());
 
         ObservableList<Room> rooms = FXCollections.observableArrayList();
         rooms.addAll(area.getRooms());
@@ -44,6 +45,8 @@ public class AreaEditController {
                 Room selectedRoom = roomList.getSelectionModel().getSelectedItem();
                 if (selectedRoom != null) {
                     try {
+                        if (selectedRoom.getArea() == null)
+                            selectedRoom.setArea(area);
                         MainController.instance.displayScene(RoomEditController.getScene());
                         RoomEditController.currentInstance.setRoom(selectedRoom);
                     } catch (Exception e) {
@@ -52,28 +55,18 @@ public class AreaEditController {
                 }
             }
         });
+
+        areaNameField.requestFocus();
     }
 
     @FXML
     private TilePane roomTilePane;
 
     @FXML
-    private Button cancelButton;
-
-    @FXML
     private Label areaPageLabel;
 
     @FXML
     private TextField areaNameField;
-
-    @FXML
-    private Button deleteAreaButton;
-
-    @FXML
-    private Button saveButton;
-
-    @FXML
-    private Button addRoomButton;
 
     @FXML
     private ListView<Room> roomList;
@@ -92,18 +85,22 @@ public class AreaEditController {
             area.setAreaName(areaNameField.getText());
         }
 
-
+        area.setRooms(roomList.getItems());
+        MainController.instance.displayPreviousScene();
     }
 
     @FXML
     void deleteArea(ActionEvent event) {
-
+        // TODO: this here function
     }
 
     @FXML
     void addNewRoom(ActionEvent event) {
         try {
             MainController.instance.displayScene(RoomEditController.getScene());
+            if (area == null)
+                area = new Area(areaNameField.getText());
+            RoomEditController.currentInstance.setRoomArea(area);
         } catch (Exception e) {
             e.printStackTrace();
         }

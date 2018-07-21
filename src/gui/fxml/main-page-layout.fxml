@@ -7,8 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="controllers.MainLayoutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainLayoutController">
    <children>
       <Label fx:id="projectName" layoutX="14.0" layoutY="14.0" prefHeight="60.0" prefWidth="294.0" text="Project Name" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
@@ -44,9 +43,9 @@
                   <Font name="Lane - Narrow" size="28.0" />
                </font>
             </Label>
-            <Button fx:id="createAreaButton" mnemonicParsing="false" onAction="#createNewArea" text="Create New Area" GridPane.rowIndex="1" />
-            <Button fx:id="createItemButton" mnemonicParsing="false" onAction="#createNewItem" text="Create New Item" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="createNpcButton" mnemonicParsing="false" onAction="#createNewNpc" text="Create New NPC" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="createAreaButton" mnemonicParsing="false" onAction="#createNewArea" prefHeight="31.0" prefWidth="199.0" text="Create New Area" GridPane.rowIndex="1" />
+            <Button fx:id="createItemButton" mnemonicParsing="false" onAction="#createNewItem" prefHeight="31.0" prefWidth="199.0" text="Create New Item" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="createNpcButton" mnemonicParsing="false" onAction="#createNewNpc" prefHeight="31.0" prefWidth="198.0" text="Create New NPC" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveProject" onMouseEntered="#saveProjectOpaque" onMouseExited="#saveProjectTransparent" opacity="0.65" text="Save Project" textFill="#a1800d" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="Microsoft Tai Le" size="18.0" />
