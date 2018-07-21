@@ -39,9 +39,6 @@ public class RoomEditController {
     private Button addExitButton;
 
     @FXML
-    private ListView<?> containerItemList;
-
-    @FXML
     private ListView<Exit> exitList;
 
     @FXML
@@ -82,7 +79,7 @@ public class RoomEditController {
 
     @FXML
     void cancel(ActionEvent event) {
-        MainController.instance.displayDefaultScene();
+        MainController.instance.displayPreviousScene();
     }
 
     @FXML
@@ -150,7 +147,7 @@ public class RoomEditController {
 
         if (dialog.showAndWait()) {
             Model.instance.removeRoom(room.roomId());
-            MainController.instance.displayDefaultScene();
+            MainController.instance.displayPreviousScene();
         }
     }
 

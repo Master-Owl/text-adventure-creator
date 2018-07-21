@@ -88,8 +88,10 @@ public class ExitEditController {
     @FXML
     void cancel(ActionEvent event) {
         try {
-            MainController.instance.displayScene(RoomEditController.getScene());
-            RoomEditController.currentInstance.setRoom(fromRoom);
+            Scene previous = MainController.instance.displayPreviousScene();
+            if (previous.lookup("#roomPageLabel") != null) {
+                RoomEditController.currentInstance.setRoom(fromRoom);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

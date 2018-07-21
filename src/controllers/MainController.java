@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.util.Stack;
+
 public class MainController extends VBox {
 
     public static MainController instance = new MainController();
@@ -21,16 +23,28 @@ public class MainController extends VBox {
     private Pane scenePane;
     private MenuBar menuBar;
     private MainMenu menu;
-    private boolean isDisplayingMainScene = false;
+    private Stack<Scene> sceneHistory = new Stack<>();
+    private boolean isDisplayingMainWindow = false;
 
+    // Window Functions ======================================================
     public void setMainWindow(Stage window) {
         mainWindow = window;
     }
-
     public void setWindowTitle(String title) {
         mainWindow.setTitle(title);
     }
+    public static void CloseActiveWindow(ActionEvent event) {
+        Stage window = (Stage) GetActiveWindow(event);
+        window.close();
+    }
+    public static Window GetActiveWindow(ActionEvent event) {
+        Node node = (Node) event.getSource();
+        return node.getScene().getWindow();
+    }
+    // Window Functions ======================================================
 
+
+    // Scene Functions =======================================================
     public void displayDefaultScene() {
         try {
             displayScene(MainLayoutController.getScene());
@@ -39,10 +53,9 @@ public class MainController extends VBox {
             e.printStackTrace();
         }
     }
-
     public void displayScene(Scene scene) {
         try {
-            if (!isDisplayingMainScene) {
+            if (!isDisplayingMainWindow) {
                 setScene(getMainScene());
                 if (scenePane == null) {
                     scenePane = (Pane) mainScene.lookup("#scenePane");
@@ -54,31 +67,31 @@ public class MainController extends VBox {
                     menuBar.getMenus().clear();
                     menuBar.getMenus().addAll(menu.getMenu());
                 }
-                isDisplayingMainScene = true;
+                isDisplayingMainWindow = true;
             }
             scenePane.getChildren().clear();
             scenePane.getChildren().add(scene.getRoot());
+            sceneHistory.push(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     public void setScene(Scene scene) {
-        isDisplayingMainScene = false;
+        isDisplayingMainWindow = false;
         mainWindow.setScene(scene);
         mainWindow.show();
     }
-
-    public static void CloseActiveWindow(ActionEvent event) {
-        Stage window = (Stage) GetActiveWindow(event);
-        window.close();
+    public Scene displayPreviousScene() {
+        if (sceneHistory.size() == 0) {
+            displayDefaultScene();
+            return sceneHistory.peek(); // Returns current scene
+        }
+        sceneHistory.pop(); // Removes current scene from stack
+        Scene previous = sceneHistory.peek();
+        scenePane.getChildren().clear();
+        scenePane.getChildren().addAll(previous.getRoot());
+        return previous;
     }
-
-    public static Window GetActiveWindow(ActionEvent event) {
-        Node node = (Node) event.getSource();
-        return node.getScene().getWindow();
-    }
-
     private Scene getMainScene() throws Exception {
         if (mainScene == null) {
             FXMLLoader fxml = new FXMLLoader(getClass().getResource("../gui/fxml/main-scene.fxml"));
@@ -89,4 +102,6 @@ public class MainController extends VBox {
         }
         return mainScene;
     }
+    // Scene Functions =======================================================
+
 }

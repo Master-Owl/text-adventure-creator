@@ -16,6 +16,16 @@ public class Area extends ListCell<Area> implements Serializable {
         areaName = name;
     }
 
+    public void setAreaName(String name) { areaName = name; }
+    public String getAreaName() { return areaName; }
+
+    public void addRoom(Room room) {
+        if (!rooms.contains(room))
+            rooms.add(room);
+    }
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+    }
     public ArrayList<Room> getRooms() { return rooms; }
     public Room getRoom(int index) {
         if (rooms.size() > index)
@@ -31,10 +41,6 @@ public class Area extends ListCell<Area> implements Serializable {
             }
         }
         return room;
-    }
-    public void addRoom(Room room) {
-        if (!rooms.contains(room))
-            rooms.add(room);
     }
 
     @Override

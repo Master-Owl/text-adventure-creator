@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.rooms.AreaEditController;
 import dataobjects.Area;
 import dataobjects.items.BaseItem;
 import javafx.collections.FXCollections;
@@ -12,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import model.Model;
+
+import java.util.ArrayList;
 
 public class MainLayoutController {
 
@@ -63,6 +66,8 @@ public class MainLayoutController {
                 }
             }
         });
+
+        saveButton.setVisible(Model.instance.hasBeenSaved());
     }
 
     @FXML
@@ -106,6 +111,11 @@ public class MainLayoutController {
 
     @FXML
     void createNewArea(ActionEvent event) {
+        try {
+            MainController.instance.displayScene(AreaEditController.getScene());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
