@@ -48,7 +48,7 @@ public class MainController extends VBox {
     public void displayDefaultScene() {
         try {
             displayScene(MainLayoutController.getScene());
-            MainLayoutController.controller.initPage();
+            MainLayoutController.currentInstance.initPage();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,6 +91,9 @@ public class MainController extends VBox {
         Scene previous = sceneHistory.peek();
         scenePane.getChildren().clear();
         scenePane.getChildren().addAll(previous.getRoot());
+        if (previous.lookup("#projectName") != null) {
+            MainLayoutController.currentInstance.initPage();
+        }
         return previous;
     }
     private Scene getMainScene() throws Exception {

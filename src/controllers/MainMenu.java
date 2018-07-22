@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.dialog.ViewRoomsDialog;
 import controllers.rooms.RoomEditController;
 import dataobjects.Room;
 import javafx.event.ActionEvent;
@@ -85,7 +86,10 @@ public class MainMenu {
 
 
         MenuItem viewAllRooms = new MenuItem("View All Rooms");
-        viewAllRooms.setDisable(true);
+        viewAllRooms.setOnAction(e -> {
+            ViewRoomsDialog roomsDialog = new ViewRoomsDialog();
+            roomsDialog.show();
+        });
         viewMenu = new Menu("View");
         viewMenu.getItems().add(viewAllRooms);
 

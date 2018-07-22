@@ -34,7 +34,8 @@ public class AreaEditController {
         if (area == null) return;
         this.area = area;
 
-        areaNameField.setText("Edit Area: " +area.getAreaName());
+        areaNameField.setText(area.getAreaName());
+        areaPageLabel.setText("Edit Area: " +area.getAreaName());
 
         ObservableList<Room> rooms = FXCollections.observableArrayList();
         rooms.addAll(area.getRooms());

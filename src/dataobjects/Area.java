@@ -53,6 +53,7 @@ public class Area extends ListCell<Area> implements Serializable {
 
         if (area != null && !empty) {
             displayText = area.areaName + " (" + area.rooms.size() + ")";
+            System.out.println(area.rooms.size());
         }
 
         this.setText(displayText);

@@ -11,14 +11,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import model.Model;
 
-import java.util.ArrayList;
-
 public class MainLayoutController {
 
-    public static MainLayoutController controller;
+    public static MainLayoutController currentInstance;
     private ObservableList<Area> areas = FXCollections.observableArrayList();
     private ObservableList<BaseItem> items = FXCollections.observableArrayList();
 
@@ -29,7 +28,6 @@ public class MainLayoutController {
 
         areas.clear();
         areas.addAll(Model.instance.getAreas());
-        areasList.getItems().clear();
         areasList.setItems(areas);
         areasList.setCellFactory(list -> new Area());
         areasList.setOnMouseClicked(mouseEvent -> {
@@ -48,7 +46,6 @@ public class MainLayoutController {
 
         items.clear();
         items.addAll(Model.instance.getItems());
-        itemsList.getItems().clear();
         itemsList.setItems(items);
         itemsList.setCellFactory(list -> new BaseItem());
         itemsList.setOnMouseClicked(mouseEvent -> {
@@ -145,7 +142,22 @@ public class MainLayoutController {
 
     @FXML
     void editProjectName(ActionEvent event) {
-
+        projectName.setVisible(false);
+        editProjectNameButton.setVisible(false);
+        editProjectNameField.setText(projectName.getText());
+        editProjectNameField.setVisible(true);
+        editProjectNameField.setDisable(false);
+        editProjectNameField.requestFocus();
+        editProjectNameField.setOnKeyPressed(e -> {
+            if(e.getCode().equals(KeyCode.ENTER)) {
+                editProjectNameField.setVisible(false);
+                editProjectNameField.setDisable(true);
+                projectName.setText(editProjectNameField.getText());
+                projectName.setVisible(true);
+                editProjectNameButton.setVisible(true);
+                Model.instance.setProjectName(editProjectNameField.getText());
+            }
+        });
     }
 
     public static Scene getScene() throws Exception {
@@ -153,7 +165,7 @@ public class MainLayoutController {
                 .getResource("../gui/fxml/main-page-layout.fxml"));
         loader.load();
         Parent root = loader.getRoot();
-        controller = loader.getController();
+        currentInstance = loader.getController();
         return new Scene(root);
     }
 
