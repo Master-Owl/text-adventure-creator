@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="250.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="48.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="itemTypeLabel" text="Weapon" textFill="#2057ab">
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+               </effect>
+               <font>
+                  <Font name="High Tower Text" size="35.0" />
+               </font>
+            </Label>
+            <TextField fx:id="weaponDamageField" prefHeight="31.0" prefWidth="247.0" promptText="Weapon Damage">
+               <HBox.margin>
+                  <Insets left="20.0" top="8.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="176.0" prefWidth="539.0">
+         <children>
+            <ChoiceBox fx:id="weaponTypeChoiceBox" prefHeight="31.0" prefWidth="128.0" />
+            <VBox prefHeight="176.0" prefWidth="248.0" spacing="10.0">
+               <HBox.margin>
+                  <Insets left="17.0" />
+               </HBox.margin>
+               <children>
+                  <TextField fx:id="manaCostField" alignment="TOP_LEFT" promptText="Mana Cost" />
+                  <Label fx:id="itemTypeLabel1" disable="true" text="Accuracy" textFill="#2057ab">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                     <font>
+                        <Font name="High Tower Text" size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Slider fx:id="weaponAccuracySlider" disable="true" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="100.0" />
+               </children>
+            </VBox>
+         </children>
+         <FlowPane.margin>
+            <Insets top="10.0" />
+         </FlowPane.margin>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</FlowPane>
